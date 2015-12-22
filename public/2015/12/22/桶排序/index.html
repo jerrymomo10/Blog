@@ -1,0 +1,744 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="排序," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="2016年的大众点评研发工程师有这样一道算法题
+
+N个未排序的整数，在线性时间内，求这N个整数在数轴上相邻两个数之间的最大差值(请写出关键算法)
+
+要求在线性时间内O(N)内解决问题，首先想到的是排序，然后求相邻元素之间的距离，返回最大值即可。这里我把常用的排序算法的复杂度总结一下。
+
+稳定性：稳定排序算法会让原本有相同键的记录维持相对次序。也就是如果一个排序是稳定的，当有两个相同键值的R和S，且">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法总结">
+<meta property="og:url" content="http://yoursite.com/2015/12/22/桶排序/index.html">
+<meta property="og:site_name" content="罗那耳朵21">
+<meta property="og:description" content="2016年的大众点评研发工程师有这样一道算法题
+
+N个未排序的整数，在线性时间内，求这N个整数在数轴上相邻两个数之间的最大差值(请写出关键算法)
+
+要求在线性时间内O(N)内解决问题，首先想到的是排序，然后求相邻元素之间的距离，返回最大值即可。这里我把常用的排序算法的复杂度总结一下。
+
+稳定性：稳定排序算法会让原本有相同键的记录维持相对次序。也就是如果一个排序是稳定的，当有两个相同键值的R和S，且">
+<meta property="og:updated_time" content="2015-12-22T02:50:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法总结">
+<meta name="twitter:description" content="2016年的大众点评研发工程师有这样一道算法题
+
+N个未排序的整数，在线性时间内，求这N个整数在数轴上相邻两个数之间的最大差值(请写出关键算法)
+
+要求在线性时间内O(N)内解决问题，首先想到的是排序，然后求相邻元素之间的距离，返回最大值即可。这里我把常用的排序算法的复杂度总结一下。
+
+稳定性：稳定排序算法会让原本有相同键的记录维持相对次序。也就是如果一个排序是稳定的，当有两个相同键值的R和S，且">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always',
+    motion: true
+  };
+</script>
+
+  <title> 排序算法总结 | 罗那耳朵21 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">罗那耳朵21</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">他不停地奔跑，就是为了追上那个被寄予厚望的自己</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                排序算法总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-22T21:59:54+08:00" content="2015-12-22">
+              2015-12-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/22/桶排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/桶排序/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>2016年的大众点评研发工程师有这样一道算法题</p>
+<blockquote>
+<p>N个未排序的整数，在线性时间内，求这N个整数在数轴上相邻两个数之间的最大差值(请写出关键算法)</p>
+</blockquote>
+<p>要求在线性时间内O(N)内解决问题，首先想到的是排序，然后求相邻元素之间的距离，返回最大值即可。这里我把常用的排序算法的复杂度总结一下。</p>
+<ul>
+<li>稳定性：稳定排序算法会让原本有相同键的记录维持相对次序。也就是如果一个排序是稳定的，当有两个相同键值的R和S，且在原本的串中R出现在S之前，在排序以后，R仍旧会在S之前。常见的稳定排序有冒泡，插入，桶，归并排序。不稳定排序有选择，希尔，堆，快速排序。</li>
+<li>平均时间复杂度为：<br>冒泡排序O(n^2)<br>选择排序O(n^2)<br>插入排序O(n^2)<br>希尔排序O(n^1.25)<br>堆排序O(n log n)<br>归并排序O(n log n)<br>快速排序O(n log n)<br>基数排序O(n)<br>详细内容可以在维基中看到<a href="https://zh.wikipedia.org/zh/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95" target="_blank" rel="external">排序算法</a></li>
+<li>可见采用基本的排序算法除了基数排序以为都不能符合要求。有两种方法很巧妙的解决了这个问题，都是用空间换时间的方法。</li>
+<li>字典排序的方法 先存入哈希表中，然后按关键字大小逐个取出，寻找最大间隔，时间复杂度是O(n)，Python语言：</li>
+</ul>
+<p><code>from collections import defaultdict
+def counting_sort(A):
+  B = []
+  C = defaultdict(list)
+  for x in A:
+    C[x].append(x)
+  for k in range(min(C),max(C)+1):
+    print C[k]
+    B.extend(C[k])
+  return B
+def counting_max_len(A):
+  max = abs(A[1]-A[0])
+  for i in range(1,len(A)-1):
+    if abs(A[i+1]-A[i])&gt;max:
+      max = abs(A[i+1]-A[i])
+  return max</code> </p>
+<ul>
+<li>改进的桶排序算法(此方法参考的牛客网邹博博士的讲义)：对于给定的N个数有最大值Max和最小值Min,如果均匀分布的话，则间隔为(MAX-MIN)/N-1,不均匀的话一定比这个间隔大，我们按这个间隔的大小为桶大小进行划分，不必比较桶内的元素，因为桶内元素间隔必定比这个间隔小，只需比较后一个桶的最小值与前一个桶的最大值即可。这个方法的空间复杂度为O(n)。C++语言：`typedef struct tagBucket<br>{<br> bool bValid;<br> int nMin;<br> int nMax;<br> tagBucket():bValid(false){}<br> void Add(int n)<br> {<pre><code><span class="keyword">if</span>(!bValid)
+{
+    <span class="variable">nMin =</span> <span class="variable">nMax =</span> n;
+    <span class="variable">bValid =</span> <span class="constant">true</span>;
+}
+<span class="keyword">else</span>
+{
+    <span class="keyword">if</span>(nMax&lt;n)<span class="variable">nMax =</span> n;
+    <span class="keyword">else</span> <span class="keyword">if</span>(nMin&gt;n)<span class="variable">nMin =</span> n;
+}
+</code></pre> }<br>}SBucket;<br>int GetMaxGap(const int<em> A,int size)<br>{<br> SBucket</em> pBucket = new SBucket[size];<br> int nMax = A[0];<br> int nMin = A[0];<br> int i = 0;<br> for(i=0;i&lt;size;i++)<br> {<pre><code><span class="keyword">if</span>(nMax&lt;<span class="literal">A</span>[i])nMax = <span class="literal">A</span>[i]<span class="comment">;</span>
+<span class="keyword">else</span> <span class="keyword">if</span>(nMin&gt;<span class="literal">A</span>[i])nMin = <span class="literal">A</span>[i]<span class="comment">;</span>
+</code></pre> }<br> int delta = nMax-nMin;<br> int nBucket;<br> for(i=0;i&lt;size;i++)<br> {<pre><code>nBucket = (<span class="keyword">A</span>[i]-nMin)*size/delta<span class="comment">;</span>
+if(nBucket&gt;=size)
+{
+    nBucket = size-1<span class="comment">;</span>
+}
+pBucket[nBucket].Add(<span class="keyword">A</span>[i])<span class="comment">;</span>
+</code></pre> }<br> i = 0;<br> int nGap = delta/size;<br> int gap;<br> for(int j=1;j&lt;size;j++)<br> {<pre><code><span class="keyword">if</span>(pBucket[j].bValid)
+{
+    <span class="variable">gap =</span> pBucket[j].nMin-pBucket[i].nMax;
+    <span class="keyword">if</span>(nGap&lt;gap)<span class="variable">nGap =</span> gap;
+    <span class="variable">i =</span> j;
+}
+</code></pre> }<br> return nGap;<br>}`</li>
+<li>Python内置的字典类型，在许多算法中能起到巧妙的作用。Python代码简洁，类型丰富，是作为程序原型和验证语言的很好的选择之一。</li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/排序/" rel="tag">#排序</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/22/对齐方式/" rel="next" title="C语言中Struct的对齐方式">
+                <i class="fa fa-chevron-left"></i> C语言中Struct的对齐方式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/22/数组分割/" rel="prev" title="数组分割问题">
+                数组分割问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/22/桶排序/"
+           data-title="排序算法总结" data-url="http://yoursite.com/2015/12/22/桶排序/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/img/author.jpg" alt="Jerry" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Jerry</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">永远年轻，永远热泪盈眶</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">标签</span>
+              
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jerrymomo10" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/JerryLuo21" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2763343374" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jerry21"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
