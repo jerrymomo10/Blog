@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="软件安装," />
+  <meta name="keywords" content="深度学习，gpu,软件安装," />
 
 
 
@@ -51,22 +51,16 @@
 
 
 
-<meta name="description" content="上一篇讲了不少关于linux下源码安装的东西，但是源码安装比较费时，需要手动维护许多依赖，对于大型的软件，依赖较多，不适合用源码安装．这一节讲一下ubuntu和fedora下的包管理工具．
-
-ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb的安装包，它是debian系的低级的管理工具,维护系统下的依赖关系，可以删除指定的安装包，但是它不负责维护软件仓">
+<meta name="description" content="事情得从2014年说起来，当时上的一门课叫人工神经网络，开始了解到深度学习，也就是多层的神经网络，正值实验室的师兄去到了百度深度学习研究院，以此开始了对深度学习的了解，当时多是概念和功能的了解。2015年参加了kaggle的一些比赛，越来越多的看到深度学习网络的强大功能，开始尝试着使用深度学习的框架和开源库。实验室的电脑是inter core 双核的，内存2g，跑个theano的深度学习库实在是费">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux下软件安装的几种方法对比(2)">
-<meta property="og:url" content="http://yoursite.com/2015/12/22/Linx_software/index.html">
+<meta property="og:title" content="Gpu平台下的深度学习系统搭建之旅">
+<meta property="og:url" content="http://yoursite.com/2015/12/23/gpu_deeplearing/index.html">
 <meta property="og:site_name" content="罗那耳朵21">
-<meta property="og:description" content="上一篇讲了不少关于linux下源码安装的东西，但是源码安装比较费时，需要手动维护许多依赖，对于大型的软件，依赖较多，不适合用源码安装．这一节讲一下ubuntu和fedora下的包管理工具．
-
-ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb的安装包，它是debian系的低级的管理工具,维护系统下的依赖关系，可以删除指定的安装包，但是它不负责维护软件仓">
-<meta property="og:updated_time" content="2015-12-22T14:04:37.000Z">
+<meta property="og:description" content="事情得从2014年说起来，当时上的一门课叫人工神经网络，开始了解到深度学习，也就是多层的神经网络，正值实验室的师兄去到了百度深度学习研究院，以此开始了对深度学习的了解，当时多是概念和功能的了解。2015年参加了kaggle的一些比赛，越来越多的看到深度学习网络的强大功能，开始尝试着使用深度学习的框架和开源库。实验室的电脑是inter core 双核的，内存2g，跑个theano的深度学习库实在是费">
+<meta property="og:updated_time" content="2015-12-23T12:27:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux下软件安装的几种方法对比(2)">
-<meta name="twitter:description" content="上一篇讲了不少关于linux下源码安装的东西，但是源码安装比较费时，需要手动维护许多依赖，对于大型的软件，依赖较多，不适合用源码安装．这一节讲一下ubuntu和fedora下的包管理工具．
-
-ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb的安装包，它是debian系的低级的管理工具,维护系统下的依赖关系，可以删除指定的安装包，但是它不负责维护软件仓">
+<meta name="twitter:title" content="Gpu平台下的深度学习系统搭建之旅">
+<meta name="twitter:description" content="事情得从2014年说起来，当时上的一门课叫人工神经网络，开始了解到深度学习，也就是多层的神经网络，正值实验室的师兄去到了百度深度学习研究院，以此开始了对深度学习的了解，当时多是概念和功能的了解。2015年参加了kaggle的一些比赛，越来越多的看到深度学习网络的强大功能，开始尝试着使用深度学习的框架和开源库。实验室的电脑是inter core 双核的，内存2g，跑个theano的深度学习库实在是费">
 
 
 
@@ -78,7 +72,7 @@ ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb
   };
 </script>
 
-  <title> Linux下软件安装的几种方法对比(2) | 罗那耳朵21 </title>
+  <title> Gpu平台下的深度学习系统搭建之旅 | 罗那耳朵21 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -218,7 +212,7 @@ ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb
             
             
               
-                Linux下软件安装的几种方法对比(2)
+                Gpu平台下的深度学习系统搭建之旅
               
             
           </h1>
@@ -227,8 +221,8 @@ ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-12-22T22:04:37+08:00" content="2015-12-22">
-              2015-12-22
+            <time itemprop="dateCreated" datetime="2015-12-23T20:27:51+08:00" content="2015-12-23">
+              2015-12-23
             </time>
           </span>
 
@@ -253,8 +247,8 @@ ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/22/Linx_software/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/Linx_software/" itemprop="commentsCount"></span>
+                <a href="/2015/12/23/gpu_deeplearing/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/23/gpu_deeplearing/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -273,15 +267,24 @@ ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb
       
 
       
-        <span itemprop="articleBody"><p>上一篇讲了不少关于linux下源码安装的东西，但是源码安装比较费时，需要手动维护许多依赖，对于大型的软件，依赖较多，不适合用源码安装．这一节讲一下ubuntu和fedora下的包管理工具．</p>
+        <span itemprop="articleBody"><ol>
+<li>事情得从2014年说起来，当时上的一门课叫人工神经网络，开始了解到深度学习，也就是多层的神经网络，正值实验室的师兄去到了百度深度学习研究院，以此开始了对深度学习的了解，当时多是概念和功能的了解。2015年参加了kaggle的一些比赛，越来越多的看到深度学习网络的强大功能，开始尝试着使用深度学习的框架和开源库。实验室的电脑是inter core 双核的，内存2g，跑个theano的深度学习库实在是费时，内存就索性升到了４g，用这个机器参加了两次阿里的数据挖掘比赛，感觉跑个gbrt的模型还是挺费时的，开始接触机器学习和数据挖掘，对如何处理完全没有经验，只是跟着coursera上的ng的的课程了解了一些模型和算法，当然成绩也不好。比赛以后陆陆续续的用r语言和kaggle上的数据训练过模型，换来换去发现还是基础知识差的太多，很多基本概念都不知道，于是读了《统计机器学习》，《机器学习》两本书，对基础知识有了一定的补充，模型，策略，算法这三大主线也逐渐清晰，越来越喜欢人工智能这个方向了，在许多的招聘网站上也看到火热的数据挖掘和人工智能的招聘帖子，更是催生了对机器学习的兴趣。</li>
+<li>2015年12月的时候谷歌开源了自家的深度学习框架TenseFlow,再一次引起了我对深度学习的注意，正好kaggle上有一个人脸特征提取的数据，于是打算用深度学习的库和框架来跑一下，然而这却成了我将近半个月的折腾之旅。</li>
+<li>一直在linux下工作，所以打算直接在我的fedora22上面安装theano库，lasagne库是在theano的基础上开发的更高级结构的深度学习库，就是安装这个的时候出现了一大堆的依赖问题，各种问题，折腾了两天左右才终于成功，当时欣喜若狂,跑一次数据训练就要６分钟，整整跑了一天还没跑完，果断放弃，想办法换gpu了。</li>
+<li>把自己打实况的gpu从寝室拿来实验室安装，gtx610,这个时候另外一个问题出现了，显卡驱动怎么装，找了一大堆教程，决定源码安装驱动，编译安装，重启，结果进不去X系统了，各种解决办法，还是没有成功安装，就在打算放弃的时候，想起了一个毕业的学长比较在行，打电话求助，决定换系统，然后换成了ubuntu系统。</li>
+<li>换系统以后没有用源码安装，因为ubuntu的ppa源丰富，直接找到了一个nvidia的ppa源，一次性安装成功，可是问题又来了，貌似不能直接调用gpu，需要装cuda,python解释成cuda可执行代码再调用cpu，安装cuda有两种方法，添加ppa源，直接apt-get和源码安装执行.sh的，两种都试过，都能成功，然后参照网上的各种配置方法，总算能用gpu计算了，抓紧跑kaggle代码，内存不足，这种失望的感觉真是没法形容。没办法，只能换gpu了。</li>
+<li>在gtx960和gtx770之间选了很久，gtx770流处理器核1560多个，256bit，４g的显存，就是老了一点，性价比比gtx960高一些，于是选择了gtx770。显卡到了以后，纳尼，这么长，２７cm,还要独立供电，好不容易在主板上硬凑合着插上，把供电线插好，更新驱动，跑起来，果然快了不少，glxgears跑到12000,考虑到cpu的性能，这个数可以接受了（同学的gtx960 i5级别的处理器跑到20000）但是突然闻到有烧糊的味道，马上拔下电源，检查显卡和电线电源，还好没烧坏。可能出现的问题，一个是电源标称500w，年代久远，性能未知，另一个可能是gpu的散热片碰到了走线，无奈，看来只能大换血了。</li>
+<li>基本是组装一台新的主机了，换电源，主板，cpu换成xeon 1231-v3,gpu，算下来4200块，心疼啊，但是想到能快速的跑模型，跑数据，以后也是它一直陪着我工作，还是给了我一些安慰的。</li>
+<li>啰嗦了很多，最后终于成功的跑起来了，还是很爽的，折腾了近半个月，有几点感悟。</li>
+</ol>
+<hr>
 <ul>
-<li>ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb的安装包，它是debian系的低级的管理工具,维护系统下的依赖关系，可以删除指定的安装包，但是它不负责维护软件仓库，所以必须手动下载．deb软件包，所以在软件不能满足依赖时它不能自动完成依赖安装．</li>
-<li>ubuntu的apt-get apt-get 是我最常用的包管理工具，因为它真的太好用了，它是Ｄebian系的高级包管理工具，底层仍然是dpkg，它与dpkg的最大区别就是它维护着一个软件仓库，这个仓库一般是网络上的软件源，这个软件源里有绝大部分的软件，而且它会帮助你自动完成依赖的安装工作．apt-get像一个智能的dpkg一样，有一系列的工具，包括软件源的添加，更新，软件的安装，移除，升级，自动移除等．</li>
-<li>ubuntu下的aptitude和synaptic　aptitude是比apt-get 更高级的包管理工具，它包括一个ui界面和更智能的包自动选择和诊断功能，在terminal输入aptitude可以看到它的界面．synaptic是一个有自己ui的方便的包管理工具，可以更直观的看到软件源里的软件和直接在图形化系统中的操作的支持</li>
-<li>ubuntu自带的软件更新工具．</li>
-<li>在redhat系中的低级包管理工具是rpm 作用同dpkg相同．yum包管理工具同apt-get相同，在fedora22以后yum工具逐渐被dnf取代．</li>
-<li>其他发行版有自己特定的包管理工具，不过功能都是大同小异了．</li>
-<li>说到包管理工具，不只是linux系统有自己的包管理工具，python也有自己的软件包管理工具pipy的pip，nodejs的npm等等，包管理工具确实可以方便我们对软件包的安装卸载和维护，就连C++都要推出包管理工具了，但是万变不利其宗，无非是自动化安装和编译的过程．</li>
+<li>基础知识是理论的指导，再厉害的技术背后一定有支撑它的理论指导，在计算机方面，尤其是算法方面，数学理论是基石，所以一定要在实践动手和回归技术细节原理上一起进步，一边动手，一边看书是最快的方法，google无疑是践行理论指导实践最成功的公司，但愿自己以后有能力加入这样的团队。</li>
+<li>简单的问题实践起来往往没有想象中的那么简单，各种问题都会出现，就像这次，本来只是想跑一下深度学习的例程，竟然最后重装了一台电脑。不要小看中间的每一个细节，不管是硬件的，操作系统的还是软件库安装使用的都会使你的知识架构更加完善和丰富，当然每一次弄懂一个问题，都会给我很大的成就感。</li>
+<li>递归的学习方法。问题往往是递归的，打开这个问题会发现这个问题背后还有另一个问题，用google搜索会递归的打开一大堆网页再递归的关闭，这样的纵向的学习过程是很重要的。书上很少有纵向的介绍问题的关联的，这样的一个递归过程可以把以前的知识都串起来，对系统的理解更加的深刻。</li>
+<li>统筹规划的能力。许多的错误是没有在起初就制定好计划而是遇到问题才解决，比如配置显卡的时候就应该对硬件电源和主板大小有充足的了解以后再做计划。在软件安装的时候就应该把软件的依赖先检查一遍，如果事先把依赖都解决，cuda安装以后，也会省下不少的时间。所以还是要在弄清楚，搞明白整个流程以后再动手，不能急躁。</li>
+<li>对新鲜事物保持好奇。深度学习这个课题不是我们实验室的项目，正是因为好奇心和对新技术的渴望让我一直捣鼓它，这其中也收获和很多的快乐，当然也花费了很多时间和money，但是我觉得是值得的。</li>
+<li>shadowsocks,google,stackoverflow,wiki是个好东西。</li>
 </ul>
 </span>
       
@@ -290,6 +293,8 @@ ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb
     <footer class="post-footer">
       
         <div class="post-tags">
+          
+            <a href="/tags/深度学习，gpu/" rel="tag">#深度学习，gpu</a>
           
             <a href="/tags/软件安装/" rel="tag">#软件安装</a>
           
@@ -300,16 +305,16 @@ ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/22/数据库连接操作的分类和操作/" rel="next" title="数据库连接操作的分类和操作">
-                <i class="fa fa-chevron-left"></i> 数据库连接操作的分类和操作
+              <a href="/2015/12/23/linux_software2/" rel="next" title="Linux下软件安装的几种方法对比(１)">
+                <i class="fa fa-chevron-left"></i> Linux下软件安装的几种方法对比(１)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/23/linux_software2/" rel="prev" title="Linux下软件安装的几种方法对比(１)">
-                Linux下软件安装的几种方法对比(１) <i class="fa fa-chevron-right"></i>
+              <a href="/2016/01/01/记第一次电话面试/" rel="prev" title="第一次电话面试">
+                第一次电话面试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -337,8 +342,8 @@ ubuntu的dpkg dpkg是debian系列的包管理工具，dpkg -i 可以安装．deb
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/12/22/Linx_software/"
-           data-title="Linux下软件安装的几种方法对比(2)" data-url="http://yoursite.com/2015/12/22/Linx_software/">
+      <div class="ds-thread" data-thread-key="2015/12/23/gpu_deeplearing/"
+           data-title="Gpu平台下的深度学习系统搭建之旅" data-url="http://yoursite.com/2015/12/23/gpu_deeplearing/">
       </div>
     
   </div>

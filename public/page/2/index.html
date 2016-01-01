@@ -136,12 +136,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
           </a>
         </li>
       
@@ -177,6 +197,217 @@
 
     
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/12/VPS搭建SS/" itemprop="url">
+                  VPS服务器和Shadowsocks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-12T11:40:51+08:00" content="2015-11-12">
+              2015-11-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/服务器/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/12/VPS搭建SS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/VPS搭建SS/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>大学的时候用过Goagent代理，并不理解具体的原理，以后陆续用过Chrome的插件红杏和时光隧道，随着红杏的关闭，SS在GitHub上的源码删除，自己尝试购买了LA的VPS。</p>
+<ul>
+<li><strong>VPS选择</strong><br>  VPS选择比较多 就是一个小型的服务器，和国内的阿里云是一样，主要是看中国外的VPS的外网IP和带宽资源，所以存储，处理器性能要求很低，当然如果是做其他的用途配置就不同了。我用的是Ramnode 128M ram,单核，网络500GB，包年15刀的，优惠以后13.5刀，个人觉得比较便宜，毕竟当时用红杏的时候包年是100+，时光隧道包月20,。<br>最初选择的VPS是著名的搬瓦工，但是没有满意的价格。据说DigitalOcean也不错。<br>RamNode 付费需要用到Paypal。开通以后会Email你服务器的登录方式，RamNode基本都是通过Email与你沟通，后续会跟你要具体的地址什么的。我选择的OS是ubuntu14.04_32，用SSH通信，修改密码，以前在阿里云上搭建过，所以使用没有什么问题。</li>
+<li><strong>SS安装配置</strong><br>先跟新软件库<br>sudo apt-get update</li>
+</ul>
+<p>SS有很多语言的实现Python,Go,C 等等。<br>这里为了方便用的Python的。<br>apt-get install python-pip<br>pip install shadowsocks</p>
+<p>使用配置文件进行配置，方法创建etc/shadowsocks.json文件，填入如下内容：</p>
+<p>{<br>    “server”:”my_server_ip”,<br>    “server_port”:8000,<br>    “local_address”: “127.0.0.1”,<br>    “local_port”:1080,<br>    “password”:”mypassword”,<br>    “timeout”:300,<br>    “method”:”rc4-md5”<br>}<br>然后使用配置文件在后台运行：</p>
+<p>ssserver -c /etc/shadowsocks.json -d start<br>如果要停止运行，将命令中的start改成stop。<br>加入开机自动启动，rc.loacl。<br>服务器上有很多加速优化的方法，没有研究，具体在<br><a href="http://wuchong.me/blog/2015/02/02/shadowsocks-install-and-optimize/" target="_blank" rel="external">http://wuchong.me/blog/2015/02/02/shadowsocks-install-and-optimize/</a><br>感谢博主分享，服务器端基本就是这样了。</p>
+<p>在客户端的安装<br><a href="http://www.jianshu.com/p/08ba65d1f91a" target="_blank" rel="external">http://www.jianshu.com/p/08ba65d1f91a</a><br>不过在Linux下用的QT5没成功，可能是我的配置有问题，只能也用Python版本的，目前还不知道能不能配置PAC，IPv6代理没有用过。<br>原来Linux下还需要浏览器安装代理插件设置，Chrome下选择SwitchSharp</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/10/日常工具使用/" itemprop="url">
+                  日常工具使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-10T21:45:20+08:00" content="2015-11-10">
+              2015-11-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/10/日常工具使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/10/日常工具使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p><strong>几次的密码丢失和系统崩溃，意识到密码管理工具和代码管理，日常文档管理的工具的重要性，在此记录下目前的常用工具。</strong></p>
+<ol>
+<li>网络云存储 这个是最重要的所有数据的备份都放在这里</li>
+<li>密码管理工具 keepassX 跨平台的密码管理工具，安全性有保证，时常把生成的密码数据库更新到百度云平台上。</li>
+<li>生活杂记 零碎的知识点和感悟记录在印象笔记上，微博也可以自动保存在这里。</li>
+<li>日志和博客 在GitHub上搭建的hexo静态博客，在本地的hexo文件夹要时常备份到百度云。</li>
+<li>代码管理工具和版本控制 Git和GitHub必须的。在Linux下Git的使用非常简单，命令行即可，图形化的Git工具gitg。Windows下使用IDE自带的Git工具。</li>
+<li>C/C++  平时主要用来刷算法题，所以不需要使用大型的IDE，在Linux下用GCC配合Geany，再配合Vim就很方便了。</li>
+<li>Python Pycharm</li>
+<li>Java IntelliJ和NetBeans，后者主要在GUI设计上很方便。</li>
+<li>翻墙 红杏被封以后用了一个月的时光隧道，现在用实验室师姐国外的VPS，用SS，以后自己搭一个VPS。</li>
+</ol>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -523,23 +754,23 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">4</span>
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
-              
+              </a>
           </div>
 
           <div class="site-state-item site-state-tags">
-            
-              <span class="site-state-item-count">12</span>
+            <a href="/tags">
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">标签</span>
-              
+              </a>
           </div>
 
         </nav>
@@ -598,8 +829,8 @@
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
