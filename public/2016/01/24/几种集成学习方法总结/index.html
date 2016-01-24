@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -51,28 +51,25 @@
 
 
 
-<meta name="description" content="从新浪博客迁移到Github以后遇到了自己的电脑系统崩溃的问题，每次都要在新装系统中重新部署HEXO环境，这里记录下HEXO博客的搭建过程。HEXO博客是由HEXO框架生成的，而HEXO的安装需要node.js的支持，因此需要首先安装node.js。在Fedora22系统中，源码安装过程如下。
+<meta name="description" content="ensemble方法经常使用，例如在第一季天池大数据比赛的时候用到的random forest和gbdt，都是常用的ensemble方法，这里对常见的bootstrap，bagging，boost等几个经常见到的概念总结一下，本文有很多内容参考了以下博客，在此谢过。博客地址
 
-从官网下在源码包，目前最新的是node-v4.2.1.
-tar -vxzf解压缩.
-./configu">
+
+参数统计和非参数统计　如果在一个统计问题中，其总体分布不能用有限个实参数来刻画，只能对它作一些诸如分布连续、有密度、具有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HEXO博客搭建">
-<meta property="og:url" content="http://yoursite.com/2015/10/21/HEXO博客搭建/index.html">
+<meta property="og:title" content="几种集成学习方法总结">
+<meta property="og:url" content="http://yoursite.com/2016/01/24/几种集成学习方法总结/index.html">
 <meta property="og:site_name" content="罗那耳朵21">
-<meta property="og:description" content="从新浪博客迁移到Github以后遇到了自己的电脑系统崩溃的问题，每次都要在新装系统中重新部署HEXO环境，这里记录下HEXO博客的搭建过程。HEXO博客是由HEXO框架生成的，而HEXO的安装需要node.js的支持，因此需要首先安装node.js。在Fedora22系统中，源码安装过程如下。
+<meta property="og:description" content="ensemble方法经常使用，例如在第一季天池大数据比赛的时候用到的random forest和gbdt，都是常用的ensemble方法，这里对常见的bootstrap，bagging，boost等几个经常见到的概念总结一下，本文有很多内容参考了以下博客，在此谢过。博客地址
 
-从官网下在源码包，目前最新的是node-v4.2.1.
-tar -vxzf解压缩.
-./configu">
-<meta property="og:updated_time" content="2015-12-22T02:50:46.000Z">
+
+参数统计和非参数统计　如果在一个统计问题中，其总体分布不能用有限个实参数来刻画，只能对它作一些诸如分布连续、有密度、具有">
+<meta property="og:updated_time" content="2016-01-24T07:49:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HEXO博客搭建">
-<meta name="twitter:description" content="从新浪博客迁移到Github以后遇到了自己的电脑系统崩溃的问题，每次都要在新装系统中重新部署HEXO环境，这里记录下HEXO博客的搭建过程。HEXO博客是由HEXO框架生成的，而HEXO的安装需要node.js的支持，因此需要首先安装node.js。在Fedora22系统中，源码安装过程如下。
+<meta name="twitter:title" content="几种集成学习方法总结">
+<meta name="twitter:description" content="ensemble方法经常使用，例如在第一季天池大数据比赛的时候用到的random forest和gbdt，都是常用的ensemble方法，这里对常见的bootstrap，bagging，boost等几个经常见到的概念总结一下，本文有很多内容参考了以下博客，在此谢过。博客地址
 
-从官网下在源码包，目前最新的是node-v4.2.1.
-tar -vxzf解压缩.
-./configu">
+
+参数统计和非参数统计　如果在一个统计问题中，其总体分布不能用有限个实参数来刻画，只能对它作一些诸如分布连续、有密度、具有">
 
 
 
@@ -84,7 +81,7 @@ tar -vxzf解压缩.
   };
 </script>
 
-  <title> HEXO博客搭建 | 罗那耳朵21 </title>
+  <title> 几种集成学习方法总结 | 罗那耳朵21 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -224,7 +221,7 @@ tar -vxzf解压缩.
             
             
               
-                HEXO博客搭建
+                几种集成学习方法总结
               
             
           </h1>
@@ -233,8 +230,8 @@ tar -vxzf解压缩.
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-21T10:29:11+08:00" content="2015-10-21">
-              2015-10-21
+            <time itemprop="dateCreated" datetime="2016-01-24T15:47:39+08:00" content="2016-01-24">
+              2016-01-24
             </time>
           </span>
 
@@ -244,8 +241,8 @@ tar -vxzf解压缩.
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/10/21/HEXO博客搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/21/HEXO博客搭建/" itemprop="commentsCount"></span>
+                <a href="/2016/01/24/几种集成学习方法总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/24/几种集成学习方法总结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -264,40 +261,43 @@ tar -vxzf解压缩.
       
 
       
-        <span itemprop="articleBody"><p>从新浪博客迁移到Github以后遇到了自己的电脑系统崩溃的问题，每次都要在新装系统中重新部署HEXO环境，这里记录下HEXO博客的搭建过程。<br>HEXO博客是由HEXO框架生成的，而HEXO的安装需要node.js的支持，因此需要首先安装node.js。<br>在Fedora22系统中，源码安装过程如下。</p>
-<ol>
-<li>从官网下在源码包，目前最新的是node-v4.2.1.</li>
-<li>tar -vxzf解压缩.</li>
-<li>./configure —prefix=/usr/local/node    这是我指定的安装位置</li>
-<li>make 时间较长，完成之后然后make install即可</li>
-<li>创建软连接。ln -s   /usr/local/node/bin/node  /usr/sbin/node和ln -s   /usr/local/node/bin/npm  /usr/sbin/npm.现在可以输入node - v和npm -v输出版本号，说明node.js安装成功了。npm是node.js的包管理工具。</li>
-<li>npm install hexo-cli -g安装hexo.</li>
-<li>hexo安装不能直接使用，也需要创建软连接ln -s   /usr/local/node/bin/hexo  /usr/sbin/hexo</li>
-<li>如果要新建博客的话，安装HEXO官网首页的教程继续就可以.这里我把我以前已经搭建过的目录拷贝过来直接操作即可.</li>
-<li>在hexo/目录下（这个是我自己的博客目录）操作即可.</li>
-</ol>
+        <span itemprop="articleBody"><p>ensemble方法经常使用，例如在第一季天池大数据比赛的时候用到的random forest和gbdt，都是常用的ensemble方法，这里对常见的bootstrap，bagging，boost等几个经常见到的概念总结一下，本文有很多内容参考了以下博客，在此谢过。<br><a href="http://blog.csdn.net/jlei_apple/article/details/8168856" target="_blank" rel="external">博客地址</a></p>
+<hr>
+<ul>
+<li>参数统计和非参数统计　如果在一个统计问题中，其总体分布不能用有限个实参数来刻画，只能对它作一些诸如分布连续、有密度、具有某阶矩等一般性的假定，则称之为非参数统计问题，可以用有限个参数进行统计说明的统计方法叫做参数统计问题。例如，检验“两个总体有相同分布”这个假设，若假定两总体的分布分别为正态分布N（μ1，σ2）和N（μ2，σ2），则问题只涉及三个实参数μ1，μ2，σ2，这是参数统计问题。若只假定两总体的分布为连续，此外一无所知，问题涉及的分布不能用有限个实参数刻画，则这是非参数统计问题。又如，估计总体分布的期望μ，若假定总体分布为正态 N（μ，σ2），则问题是参数性的；若只假定总体分布的期望值存在，则问题是非参数性的。在andrew ng的stanford的机器学习课程上见到的对数据的分布进行假设的问题都是参数估计问题。</li>
+<li>Bootstrap 又叫做自助法，是统计中非参数估计的一种常见方法，它是一种有放回的抽样方法，其核心思想和基本步骤如下：<br>　　（1） 采用重抽样技术从原始样本中抽取一定数量（自己给定）的样本，此过程允许重复抽样。 （n个样本中是否时采样n个不同方法不同）<br>　　（2） 根据抽出的样本计算给定的统计量T。<br>　　（3） 重复上述N次（一般大于1000），得到N个统计量T。<br>　　（4） 用N个统计量T来近似原问题的分布。<br>　　应该说Bootstrap是现代统计学较为流行的一种统计方法，在小样本时效果很好，本质上，bootstrap算法是最大似然估计的一种实现，它和最大似然估计相比的优点在于，它不需要用参数来刻画总体分布。</li>
+<li>BootStrap思想的两种应用之bagging ，bootstrap aggregating的缩写。让该学习算法训练多轮，每轮的训练集由从初始的训练集中随机取出的n个训练样本组成，某个初始训练样本在某轮训练集中可以出现多次或根本不出现，训练之后可得到一个预测函数序列h_1，⋯ ⋯h_n ，最终的预测函数H对分类问题采用投票方式，对回归问题采用简单平均方法对新示例进行判别。例如(训练R个分类器fi，分类器之间其他相同就是参数不同。其中fi是通过从训练集合中(N篇文档)随机取(取后放回)N次文档构成的训练集合训练得到的。–对于新文档d，用这R个分类器去分类，得到的最多的那个类别作为d的最终类别.)</li>
+<li>BootStrap思想的两种应用之boosting,其中主要的是AdaBoost（Adaptive Boosting）。初始化时对每一个训练例赋相等的权重1／n，然后用该学算法对训练集训练t轮，每次训练后，对训练失败的训练例赋以较大的权重，也就是让学习算法在后续的学习中集中对比较难的训练例进行学习，从而得到一个预测函数序列h_1,⋯, h_m , 其中h_i也有一定的权重，预测效果好的预测函数权重较大，反之较小。最终的预测函数H对分类问题采用有权重的投票方式，对回归问题采用加权平均的方法对新示例进行判别。<br>（类似Bagging方法，但是训练是串行进行的，第k个分类器训练时关注对前k-1分类器中错分的文档，即不是随机取，而是加大取这些文档的概率。)</li>
+<li>Bagging与Boosting的区别：二者的主要区别是取样方式不同。Bagging采用均匀取样，而Boosting根据错误率来取样，因此Boosting的分类精度要优于Bagging。Bagging的训练集的选择是随机的，各轮训练集之间相互独立，而Boostlng的各轮训练集的选择与前面各轮的学习结果有关；Bagging的各个预测函数没有权重，而Boosting是有权重的；Bagging的各个预测函数可以并行生成，而Boosting的各个预测函数只能顺序生成。对于象神经网络这样极为耗时的学习方法。Bagging可通过并行训练节省大量时间开销。<br>bagging和boosting都可以有效地提高分类的准确性。在大多数数据集中，boosting的准确性比bagging高。在有些数据集中，boosting会引起退化—- Overfit。</li>
+<li>gradient boosting（又叫Mart, Treenet)：Boosting是一种思想，Gradient Boosting是一种实现Boosting的方法，它主要的思想是，每一次建立模型是在之前建立模型损失函数的梯度下降方向。损失函数(loss function)描述的是模型的不靠谱程度，损失函数越大，则说明模型越容易出错。如果我们的模型能够让损失函数持续的下降，则说明我们的模型在不停的改进，而最好的方式就是让损失函数在其梯度（Gradient)的方向上下降。</li>
+<li>Rand forest： 随机森林，顾名思义，是用随机的方式建立一个森林，森林里面有很多的决策树组成，随机森林的每一棵决策树之间是没有关联的。在得到森林之后，当有一个新的输入样本进入的时候，就让森林中的每一棵决策树分别进行一下判断，看看这个样本应该属于哪一类（对于分类算法），然后看看哪一类被选择最多，就预测这个样本为那一类。 在建立每一棵决策树的过程中，有两点需要注意 - 采样与完全分裂。首先是两个随机采样的过程，random forest对输入的数据要进行行、列的采样。对于行采样，采用有放回的方式，也就是在采样得到的样本集合中，可能有重复的样本。假设输入样本为N个，那么采样的样本也为N个。这样使得在训练的时候，每一棵树的输入样本都不是全部的样本，使得相对不容易出现over-fitting。然后进行列采样，从M个feature中，选择m个(m &lt;&lt; M)。之后就是对采样之后的数据使用完全分裂的方式建立出决策树，这样决策树的某一个叶子节点要么是无法继续分裂的，要么里面的所有样本的都是指向的同一个分类。一般很多的决策树算法都一个重要的步骤 - 剪枝，但是这里不这样干，由于之前的两个随机采样的过程保证了随机性，所以就算不剪枝，也不会出现over-fitting。 按这种算法得到的随机森林中的每一棵都是很弱的，但是大家组合起来就很厉害了。可以这样比喻随机森林算法：每一棵决策树就是一个精通于某一个窄领域的专家（因为我们从M个feature中选择m让每一棵决策树进行学习），这样在随机森林中就有了很多个精通不同领域的专家，对一个新的问题（新的输入数据），可以用不同的角度去看待它，最终由各个专家，投票得到结果。在面试的时候被问到为什么要采取有放回的采样方式，当时没有回答上来，个人觉得主要原因是不破坏数据的分布情况，如果采用放回的形式，那么下一次采样出来的时候和整体的数据分布情况以及每一次采用出来的数据的分布情况都不相同，所以要采用有放回的采用形式。</li>
+<li>Random forest与bagging的区别：1）. Random forest是选与输入样本的数目相同多的次数（可能一个样本会被选取多次，同时也会造成一些样本不会被选取到），而bagging一般选取比输入样本的数目少的样本，也就是random forest的行采样）. bagging是用全部特征来得到分类器，而random forest是需要从全部特征中选取其中的一部分来训练得到分类器,也就是random forest列采样，一般Rand forest效果比bagging效果好.</li>
+<li>文本分类中使用的投票方法（Voting，也叫组合分类器）就是一种典型的集成机器学习方法。它通过组合多个弱分类器来得到一个强分类器，包括Bagging和Boosting两种方式，二者的主要区别是取样方式不同。Bagging采用均匀取样，而Boosting根据错误率来取样，因此Boosting的分类精度要优于Bagging。投票分类方法虽然分类精度较高，但训练时间较长。</li>
+</ul>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag">#机器学习</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/28/生活学习总结/" rel="next" title="生活学习总结">
-                <i class="fa fa-chevron-left"></i> 生活学习总结
+              <a href="/2016/01/21/Linux驱动更新/" rel="next" title="Linux驱动更新">
+                <i class="fa fa-chevron-left"></i> Linux驱动更新
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/10/日常工具使用/" rel="prev" title="日常工具使用">
-                日常工具使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -324,8 +324,8 @@ tar -vxzf解压缩.
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/21/HEXO博客搭建/"
-           data-title="HEXO博客搭建" data-url="http://yoursite.com/2015/10/21/HEXO博客搭建/">
+      <div class="ds-thread" data-thread-key="2016/01/24/几种集成学习方法总结/"
+           data-title="几种集成学习方法总结" data-url="http://yoursite.com/2016/01/24/几种集成学习方法总结/">
       </div>
     
   </div>
