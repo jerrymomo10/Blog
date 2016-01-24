@@ -771,6 +771,106 @@
             
               
                 
+                <a class="post-title-link" href="/2015/12/22/对齐方式/" itemprop="url">
+                  C语言中Struct的对齐方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-22T21:59:54+08:00" content="2015-12-22">
+              2015-12-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/22/对齐方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/对齐方式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <ul>
+<li>为什么要对齐  加快存储器对的读写操作，由两次读写变为一次，不需要拼接。</li>
+<li>什么叫做对齐  地址的对齐，2字节对齐就是地址是2的倍数，4字节对齐是地址是4的倍数。</li>
+<li>对齐策略 short类型地址必须是2的倍数，int int* float double 的地址必须是4的倍数。</li>
+<li>IA32指令要求，每个块的存储都是以16字节对齐方式来分配的，就是说地址的最低4位的为0。</li>
+<li>举例 <code>struct data{
+char a;
+int b;
+int64_t c;
+char d;}</code><br>那么 data d;<br>d的地址一定是4的倍数。<br>a的地址为0 占一个字节<br>b的地址为4 占4个字节（为了保证int的地址是4的倍数）<br>c的地址为8 占8个字节<br>d的地址为16 占1个字节</li>
+<li>在上面的例子中若data d[3] 那么data[1]的地址为多少呢？<br>为了保证地址的连续和数据的对齐，在data的结构体中一定要进行尾部填充，char d后面是填充3个字节还是7个呢？答案是7。因为data[1]的地址为data[0]+sizeof(data)，如果填充3个的话，data为20个字节大小，data[1]中的c地址为28，不再是8的倍数，字节不再对齐，所以一定是填充7。</li>
+<li>sizeof(data)为24。</li>
+</ul>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/22/数组分割/" itemprop="url">
                   数组分割问题
                 </a>
@@ -1008,106 +1108,6 @@ select s.*,c<span class="class">.className</span> from T_student s inner join T_
             
               
                 
-                <a class="post-title-link" href="/2015/12/22/对齐方式/" itemprop="url">
-                  C语言中Struct的对齐方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-12-22T21:59:54+08:00" content="2015-12-22">
-              2015-12-22
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/22/对齐方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/对齐方式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <ul>
-<li>为什么要对齐  加快存储器对的读写操作，由两次读写变为一次，不需要拼接。</li>
-<li>什么叫做对齐  地址的对齐，2字节对齐就是地址是2的倍数，4字节对齐是地址是4的倍数。</li>
-<li>对齐策略 short类型地址必须是2的倍数，int int* float double 的地址必须是4的倍数。</li>
-<li>IA32指令要求，每个块的存储都是以16字节对齐方式来分配的，就是说地址的最低4位的为0。</li>
-<li>举例 <code>struct data{
-char a;
-int b;
-int64_t c;
-char d;}</code><br>那么 data d;<br>d的地址一定是4的倍数。<br>a的地址为0 占一个字节<br>b的地址为4 占4个字节（为了保证int的地址是4的倍数）<br>c的地址为8 占8个字节<br>d的地址为16 占1个字节</li>
-<li>在上面的例子中若data d[3] 那么data[1]的地址为多少呢？<br>为了保证地址的连续和数据的对齐，在data的结构体中一定要进行尾部填充，char d后面是填充3个字节还是7个呢？答案是7。因为data[1]的地址为data[0]+sizeof(data)，如果填充3个的话，data为20个字节大小，data[1]中的c地址为28，不再是8的倍数，字节不再对齐，所以一定是填充7。</li>
-<li>sizeof(data)为24。</li>
-</ul>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2015/12/22/桶排序/" itemprop="url">
                   排序算法总结
                 </a>
@@ -1250,8 +1250,8 @@ pBucket[nBucket].Add(<span class="keyword">A</span>[i])<span class="comment">;</
             
               
                 
-                <a class="post-title-link" href="/2015/12/22/Linux下固定mac和ip绑定方式/" itemprop="url">
-                  Linux下固定mac和ip绑定方式
+                <a class="post-title-link" href="/2015/12/22/C++中Static的使用总结/" itemprop="url">
+                  C++中Static的使用总结
                 </a>
               
             
@@ -1267,13 +1267,28 @@ pBucket[nBucket].Add(<span class="keyword">A</span>[i])<span class="comment">;</
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/22/Linux下固定mac和ip绑定方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/Linux下固定mac和ip绑定方式/" itemprop="commentsCount"></span>
+                <a href="/2015/12/22/C++中Static的使用总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/C++中Static的使用总结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1295,51 +1310,13 @@ pBucket[nBucket].Add(<span class="keyword">A</span>[i])<span class="comment">;</
         
           <span itemprop="articleBody">
             
-              <p>在实验室帮师弟的Ubuntu14.04解决上网问题时发现了Ubuntu下固定mac和ip上网方式时的一些步骤，有些教程是不全面的甚至是错误的，所以在这里总结一下。<br>Linux有一些命令可以简单的设置固定ip和mac，但是系统重启以后就失效的方法，这里就不提了，介绍的是永久的修改方法。</p>
-<hr>
-<ul>
-<li><p>IP的固定修改/etc/network/interfaces<br>将DHCP屏蔽 </p>
-<blockquote>
-<p>iface eth0 inet dhcp</p>
-</blockquote>
-<p>添加静态ip有关的参数</p>
-<blockquote>
-<p>  iface eth0 inet static<br> address 192.168.0.10<br> netmask 255.255.255.0<br> gateway 192.168.0.1</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li>设置DNS修改/etc/resolv.conf<blockquote>
-<p>nameserver 202.96.134.133<br>nameserver 202.106.0.20</p>
-</blockquote>
-</li>
-</ul>
-<p>虽然设置了固定的DNS，但是每次重启DNS都会被重写，所以也要修改/etc/resolvconf/resolv.conf.d/base这个文件为</p>
-<blockquote>
-<p>nameserver 202.96.134.133<br> nameserver 202.106.0.20</p>
-</blockquote>
-<ul>
-<li>固定mac设定，在/etc/rc.d/rc.local中添加：</li>
-</ul>
-<blockquote>
-<p>ifconfig eth0 down<br>ifconfig eth0 hw ether 00:0C:18:EF:FF:ED<br>ifconfig eth0 up</p>
-</blockquote>
-<ul>
-<li><p>然后执行重启网卡设置：</p>
-<blockquote>
-<p>sudo ifdown eth0<br>sudo ifup eth0<br>ifconfig -a</p>
-</blockquote>
-</li>
-<li><p>修改默认网关，至关重要，最后发现的问题</p>
-</li>
-</ul>
-<blockquote>
-<p>route add default gw 192.168.2.1 </p>
-</blockquote>
-<p>但是每次重启系统，都要执行这条命令，最好把它写入/etc/rc.local </p>
-<blockquote>
-<p>route add gw 192.168.2.254 eth0</p>
-</blockquote>
+              <p>static的作用</p>
+<p>在函数体，一个被声明为static的变量，在这一函数被调用的过程里，其数值维持不变。<br>在模块内（但在函数体外），一个被声明的静态变量可以被模块内的所有函数访问，但是不能被模块外的函数访问，是一个本地的全局变量<br>在模块内，一个被声明为静态的函数只可能被这一模块内的其他函数调用，也就是这个函数被限制在声明它的模块内使用。<br>总的来说，static控制了变量和函数的使用范围（本地数据化和代码范围的控制）</p>
+<p>static全局变量和普通全局变量的区别</p>
+<p>全局变量和静态全局变量都是静态存储方式。区别在于：非静态全局变量的作用域是整个源程序，当一个源程序有多个源文件组成时，非静态的全局变量在各个源文件都有效，而静态全局变量则限制了作用域，只定义了该静态全局变量的源文件有效，同一源程序的其他源文件不能使用它，使用静态全局变量可以避免在其他源文件中引起错误。</p>
+<p>综上：把局部变量改成静态变量改变了它的存储方式，及改变了它的生存期，把全局变量改为静态变量，改变了它的作用域，限制了它的使用范围。</p>
+<p>static全局变量与普通全局变量的区别：static全局变量只初始化一次，防止在其他文件单元中被引用<br>static局部变量与普通变量的区别：static全局变量只初始化一次，下一次依据上一次结果值。<br>static函数与普通函数的区别：static函数在内存中只有一份，普通函数在每个被调用中维持一份复制品<br>C++类的静态数据和方法成员</p>
+<p>类中的静态成员和方法不属于类的实例，而属于类本身并在所有类的实例间共享。调用这些时，应用类名：：来引用。</p>
 
             
           </span>
@@ -1407,21 +1384,21 @@ pBucket[nBucket].Add(<span class="keyword">A</span>[i])<span class="comment">;</
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
